@@ -1,0 +1,91 @@
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  display: grid;
+  grid-template-areas:
+    "sidebar form"
+    "sidebar cards";
+  grid-template-rows: 50% 50%;
+
+  grid-template-columns: 1fr 5fr;
+}
+
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  color: #BFBFDD;
+  font-size: 12pt;
+  font-weight: 700;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #1F1F3D;
+  font-weight: 300;
+  color: #FFFFFF;
+  grid-area: sidebar;
+}
+
+.show-starred {
+  width: 90%;
+  height: 50px;
+  border: 1px solid #353567;
+  color: #E9E9F3;
+  font-size: 14pt;
+  font-weight: 700;
+  background-color: #5356A4;
+}
+
+.filter {
+  border-top: 1px solid #353567;
+  border-bottom: 1px solid #353567;
+}
+
+img {
+  height: 25px;
+  width: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: form;
+  background-color: #A9AAD2;
+}
+
+.card-container{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  grid-area: cards;
+  background-color: #EAEAF4;
+}
+
+input {
+  width: 30%;
+}
+
+.card {
+  border: 2px solid #5356A4;
+  width: 25%;
+  background-color: #FFFFFF;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #1F1F3D;
+}
+
+footer {
+  background-color: #5356A4;
+  display: flex;
+  justify-content: flex-start;
+  height: 40px;
+}

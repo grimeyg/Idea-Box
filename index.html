@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <section>
+    <section class="sidebar">
       <h1>IdeaBox</h1>
-      <div>
+      <div class="filter">
         <h2>Filter Starred Ideas</h2>
-        <button>Show Starred Ideas</button>
+        <button class="show-starred">Show Starred Ideas</button>
       </div>
     </section>
     <form>
@@ -25,19 +26,19 @@
         </input>
       </div>
     </form>
-    <section>
-      <div>
+    <section class="card-container">
+      <div class="card">
         <header>
           <img src="images/star-active.svg" alt="Active Star">
           <img src="images/delete.svg" alt="Delete Icon">
         </header>
-      </div>
-      <h4>Idea Title</h4>
-      <p>Randommmmmmmm</p>
+        <h4>Idea Title</h4>
+        <p>Randommmmmmmm</p>
       <footer>
         <img src="images/comment.svg" alt="Comment Icon">
         <h5>Comment</h5>
       </footer>
+    </div>
     </section>
   </body>
 </html>

@@ -38,6 +38,7 @@ h4 {
 h5 {
   margin-bottom: 3px;
   margin-top: 0px;
+  font-size: 18px;
 }
 
 .sidebar {
@@ -69,14 +70,11 @@ h5 {
 }
 
 img {
-  height: 1;
-  width: 23px;
+  width: 35px;
 }
 
 .comment-icon {
-  height: 28px;
-  width: 28px;
-
+  width: 45px;
 }
 
 form {

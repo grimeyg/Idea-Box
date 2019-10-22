@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -15,17 +16,23 @@
       </div>
     </section>
     <form>
-      <h3>Title</h3>
-      <input type=text></input>
-      <h3>Body</h3>
-      <input type=text></input>
-      <button>Save</button>
-      <div>
-        <img src="images/search.svg" alt="Search Icon">
-        <input placeholder="Search Ideas">
-        </input>
+      <div class="form-flex">
+        <h3>Title</h3>
+        <input type=text></input>
+      </div>
+      <div class="form-flex">
+        <h3>Body</h3>
+        <input id="fat-boy" type=text></input>
+      </div>
+      <button class="save">Save</button>
+      <div class="form-flex search-box">
+        <img id="search" src="images/search.svg" alt="Search Icon">
+        <input class="search-input"placeholder="Search Ideas"></input>
       </div>
     </form>
+
+
+
     <section class="card-container">
       <div class="card">
         <header>

@@ -7,9 +7,8 @@ body {
   grid-template-areas:
     "sidebar form"
     "sidebar cards";
-  grid-template-rows: 50% 50%;
-
-  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 50% 125%;
+  grid-template-columns: 1fr 5fr;
 }
 
 
@@ -24,6 +23,15 @@ h2 {
   font-size: 10pt;
   margin: 5% 6% 10% 6%;
   font-weight: 700;
+}
+
+h4 {
+  margin: 15px 0px 0px 15px;
+}
+
+h5 {
+  margin-bottom: 3px;
+  margin-top: 0px;
 }
 
 .sidebar {
@@ -55,8 +63,14 @@ h2 {
 }
 
 img {
-  height: 25px;
-  width: 25px;
+  height: 23px;
+  width: 23px;
+}
+
+.comment-icon {
+  height: 28px;
+  width: 28px;
+
 }
 
 form {
@@ -68,9 +82,9 @@ form {
 }
 
 .card-container{
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   grid-area: cards;
   background-color: #EAEAF4;
 }
@@ -80,14 +94,20 @@ input {
 }
 
 .card {
-  border: 2px solid #5356A4;
-  width: 25%;
+  border: 2px solid #353567;
+  /* width: 28%; */
+  width: 190px;
+  height: 210px;
   background-color: #FFFFFF;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
   display: flex;
   justify-content: space-between;
+  height: 27px;
   background-color: #1F1F3D;
 }
 
@@ -95,5 +115,17 @@ footer {
   background-color: #5356A4;
   display: flex;
   justify-content: flex-start;
-  height: 40px;
+  align-items: center;
+  margin-top: auto;
+  border-top: 2px solid #353567;
+  height: 17px;
+  padding: 5px;
+  color: #FFFFFF;
+  font-weight: 300;
+  font-size: 11pt;
+}
+
+p {
+  margin-left: 15px;
+  margin-top: 10px;
 }

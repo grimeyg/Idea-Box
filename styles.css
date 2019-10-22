@@ -3,6 +3,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
   display: grid;
+  width: 100%;
   grid-template-areas:
     "sidebar form"
     "sidebar cards";
@@ -13,11 +14,14 @@ body {
 
 h1 {
   font-weight: 700;
+  font-size: 13pt;
+  margin-left: 5%;
 }
 
 h2 {
   color: #BFBFDD;
-  font-size: 12pt;
+  font-size: 10pt;
+  margin: 5% 6% 10% 6%;
   font-weight: 700;
 }
 
@@ -40,18 +44,22 @@ h5 {
 }
 
 .show-starred {
+  font-family: 'Open Sans', sans-serif;
   width: 90%;
-  height: 50px;
+  height: 40px;
   border: 1px solid #353567;
   color: #E9E9F3;
-  font-size: 14pt;
+  font-size: 13pt;
   font-weight: 700;
   background-color: #5356A4;
+  margin: 0% 5% 0% 5%;
 }
 
 .filter {
   border-top: 1px solid #353567;
   border-bottom: 1px solid #353567;
+  height: 130px;
+  padding: 3%;
 }
 
 img {

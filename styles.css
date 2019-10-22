@@ -188,15 +188,35 @@ p {
   border-radius: 4px;
 }
 
-@media screen and (max-width: 1150px) {
-  /* body {
-    grid-template-columns: 220px 950px;
+@media screen and (max-width: 1220px) {
+  .card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 900px) {
+
+/* .card-container {
+  grid-template-columns: 1fr;
   } */
 
-  /* .sidebar {
+.form-flex {
+    width:95%;
+  }
 
-    font-size: 15px;
-    width: 500px; */
+body {
+  grid-area: none;
+  display: flex;
+  flex-direction: column;
+  }
 
+  .sidebar {
+    width: 100%;
+  }
+
+  .filter{
+    display: none;
+  }
+  h1{
+    align-self: center;
   }
 }

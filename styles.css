@@ -9,7 +9,7 @@ body {
     "sidebar form"
     "sidebar cards";
   grid-template-rows: 40% 155%;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 220px auto;
 }
 
 
@@ -48,6 +48,7 @@ h5 {
   font-weight: 300;
   color: #FFFFFF;
   grid-area: sidebar;
+  width: 225px;
 }
 
 .show-starred {
@@ -56,10 +57,11 @@ h5 {
   height: 40px;
   border: 1px solid #353567;
   color: #E9E9F3;
-  font-size: 13pt;
+  font-size: 15px;
   font-weight: 700;
   background-color: #5356A4;
   margin: 0% 5% 0% 5%;
+
 }
 
 .filter {
@@ -184,4 +186,17 @@ p {
   align-items: center;
   border:2px solid #5356A4;
   border-radius: 4px;
+}
+
+@media screen and (max-width: 1150px) {
+  /* body {
+    grid-template-columns: 220px 950px;
+  } */
+
+  /* .sidebar {
+
+    font-size: 15px;
+    width: 500px; */
+
+  }
 }

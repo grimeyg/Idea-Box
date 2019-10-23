@@ -206,12 +206,12 @@ p {
 
   .form-flex,
   .save {
-      width: 50%;
+      width: 45%;
     }
 
   .card-container {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 21%;
+    grid-template-rows: 20% 20% 20%;
   }
 }
 
@@ -220,14 +220,14 @@ p {
 
   .form-flex,
   .save {
-      width: 90%;
-    }
+    width: 90%;
+  }
 
   body {
     grid-area: none;
     display: flex;
     flex-direction: column;
-    }
+  }
 
   .sidebar {
     width: 100%;
@@ -268,6 +268,7 @@ p {
 
   .card-container {
     grid-template-columns: 1fr;
+    grid-template-rows: 20%;
   }
 
   .card {
@@ -277,34 +278,27 @@ p {
   }
 
   footer {
-      /* background-color: #5356A4;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center; */
-      margin: 0px;
-      /* border-top: 2px solid #353567; */
-      height: 10%;
-      padding: 5px;
-      /* color: #FFFFFF;
-      font-weight: 300; */
-      font-size: 8pt;
-    }
+    margin: 0px;
+    height: 10%;
+    padding: 5px;
+    font-size: 8pt;
+  }
 
-    p {
-      font-size: 23px;
-    }
+  p {
+    font-size: 23px;
+  }
 
-    .form-flex,
-    .save {
-        width: 93%;
-      }
+  .form-flex,
+  .save {
+    width: 93%;
+  }
 
-    form {
-      padding-bottom: 30px;
-    }
+  form {
+    padding-bottom: 30px;
+  }
 
-    .comment-icon {
-      width: 38px;
-    }
+  .comment-icon {
+    width: 38px;
+  }
 
 }

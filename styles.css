@@ -8,7 +8,7 @@ body {
   grid-template-areas:
     "sidebar form"
     "sidebar cards";
-  grid-template-rows: 40% 155%;
+  grid-template-rows: 40% 80%;
   grid-template-columns: 220px auto;
 }
 
@@ -92,7 +92,7 @@ form {
 
 .card-container{
   display: grid;
-  grid-template-rows: 21% 21%;
+  grid-template-rows: 40% 40%;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   grid-area: cards;
@@ -204,7 +204,7 @@ p {
 
 @media screen and (max-width: 1220px) {
   body {
-      grid-template-rows: 30% 120%;
+      grid-template-rows: 30% 80%;
   }
 
   .form-flex,
@@ -214,7 +214,7 @@ p {
 
   .card-container {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 20% 20% 20%;
+    grid-template-rows: 32% 32% 32%;
   }
 }
 
@@ -277,7 +277,7 @@ p {
   .card {
     width: 450px;
     height: 235px;
-    margin: 5% 0% 0% 0%;
+    margin: 2.5% 0% 2.5% 0%;
   }
 
   footer {

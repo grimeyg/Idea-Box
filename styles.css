@@ -27,10 +27,12 @@ h2 {
 }
 
 h3 {
+  color: #1F1F3D;
   margin-bottom: 6px;
 }
 
 h4 {
+  color: #1F1F3D;
   margin: 15px 0px 0px 20px;
   font-size: 25px;
 }
@@ -142,6 +144,7 @@ footer {
 p {
   margin: 10px 40px 15px 20px;
   font-size: 25px;
+  color: #1F1F3D;
 }
 
 .form-flex {
@@ -272,7 +275,7 @@ p {
   }
 
   .card {
-    width: 460px;
+    width: 450px;
     height: 235px;
     margin: 5% 0% 0% 0%;
   }

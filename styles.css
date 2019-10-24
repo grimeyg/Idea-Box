@@ -161,7 +161,10 @@ p {
   width: 40%
 }
 
-
+#active {
+  background-color: #343567;
+  cursor: pointer;
+}
 
 .save {
   width: 40%;
@@ -173,22 +176,8 @@ p {
   border-radius: 2px;
   margin-bottom: 25px;
   font-size: 24px;
-  cursor: default;
   background-color: #5356A4;
 }
-
-/* .disabled {
-
-} */
-
-.active {
-  background-color: #343567;
-  cursor: pointer;
-}
-
-/* .save:hover {
-  cursor: pointer;
-} */
 
 ::placeholder {
   font-family: 'Open Sans', sans-serif;

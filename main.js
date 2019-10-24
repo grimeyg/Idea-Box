@@ -10,7 +10,6 @@ function checkInputs() {
   event.preventDefault();
    if (bodyIn.value.length > 0 && titleIn.value.length > 0) {
     saveBtn.disabled = false;
-    saveBtn.style.cursor = "pointer";
-    saveBtn.style.background = "#343567";
+    saveBtn.id = "active";
   }
 }

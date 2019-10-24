@@ -15,6 +15,8 @@ function checkInputs() {
     saveBtn.id = "active";
   }
 
+}
+//
 saveBtn.addEventListener("click", addCard)
 //when I click Save I should see a new card apper with title/body
 function addCard (){

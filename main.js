@@ -23,10 +23,6 @@ saveBtn.addEventListener("click", addCard)
 //when I click Save I should see a new card apper with title/body
 function addCard() {
   //when I click save I should not see the page reload
-  if(userInput.value === "") {
-    return;
-  };
-  // we have the above line because otherwise addCard runs twice
   cardContainer.innerHTML += `
   <div class="card">
     <header>

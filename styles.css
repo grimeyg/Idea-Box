@@ -166,6 +166,7 @@ p {
 
 #active {
   background-color: #343567;
+  cursor: pointer;
 }
 
 .save {

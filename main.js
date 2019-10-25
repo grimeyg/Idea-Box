@@ -15,22 +15,30 @@ function checkInputs() {
    if (bodyInput.value.length > 0 && titleInput.value.length > 0) {
     saveBtn.disabled = false;
     saveBtn.id = "active";
-    console.log(newbie);
   }
-}
+};
 
 saveBtn.addEventListener("click", addCard)
+
+
 //when I click Save I should see a new card apper with title/body
 function addCard() {
+  var id = Date.now();
+  var newbie = new Card(titleInput.value, bodyInput.value, id.value);
+  cards.push(newbie);
+  var recent = cards[cards.length - 1];
+  console.log(cards);
   //when I click save I should not see the page reload
+
+  // this.id = date now, need to interpolate
   cardContainer.innerHTML += `
   <div class="card">
     <header>
       <img src="images/star-active.svg" alt="Active Star">
       <img src="images/delete.svg" alt="Delete Icon">
     </header>
-    <h4>${titleInput.value}</h4>
-    <p>${bodyInput.value}</p>
+    <h4>${recent.title}</h4>
+    <p>${recent.body}</p>
     <footer>
       <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
       <h5>Comment</h5>

@@ -23,11 +23,14 @@ saveBtn.addEventListener("click", addCard)
 
 //when I click Save I should see a new card apper with title/body
 function addCard() {
-  var newbie = new Card(titleInput.value, bodyInput.value);
+  var id = Date.now();
+  var newbie = new Card(titleInput.value, bodyInput.value, id.value);
   cards.push(newbie);
   var recent = cards[cards.length - 1];
   console.log(cards);
   //when I click save I should not see the page reload
+
+  // this.id = date now, need to interpolate
   cardContainer.innerHTML += `
   <div class="card">
     <header>

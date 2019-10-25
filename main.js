@@ -10,9 +10,11 @@ saveBtn.disabled = true;
 
 userInput.addEventListener("keyup", checkInputs);
 
+cardContainer.addEventListener
+
 function checkInputs() {
   event.preventDefault();
-   if (bodyInput.value.length > 0 && titleInput.value.length > 0) {
+   if (userInput.value) {
     saveBtn.disabled = false;
     saveBtn.id = "active";
   }

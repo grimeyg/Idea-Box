@@ -3,5 +3,6 @@ class Card {
     this.title = title;
     this.body = body;
     this.id = Date.now();
+    this.favorite = false;
   }
 }

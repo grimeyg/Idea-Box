@@ -16,6 +16,9 @@ cardContainer.addEventListener("click", function(event) {
   if (event.target.className === 'star') {
     favoriteCard();
   }
+  if (event.target.className === 'delete') {
+    deleteCard();
+  }
 });
 
 function checkInputs(event) {
@@ -42,7 +45,7 @@ function addCard(event) {
   <div class="card">
     <header>
       <img src="images/star.svg" alt="Star" class="star" id=${recent.id}>
-      <img src="images/delete.svg" alt="Delete Icon">
+      <img src="images/delete.svg" alt="Delete Icon" class="delete">
     </header>
     <h4>${recent.title}</h4>
     <p>${recent.body}</p>
@@ -70,3 +73,12 @@ function favoriteCard() {
     event.target.setAttribute('src',"images/star.svg");
     }
   };
+
+function deleteCard() {
+  for (var i = 0; i < cards.length; i++) {
+    if (event.target.className === 'delete') {
+        cards.splice(i, 1);
+        event.target.closest('.card').remove();
+    }
+  }
+};

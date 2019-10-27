@@ -8,18 +8,18 @@ Build an application that records and archives a user's ideas.
 # Iteration 0: Desktop Layout
 - Using HTML & CSS, create the application's desktop layout.
 
-![Desktop Layout](images/ib-desktop.png"
+![Desktop Layout](images/ib-desktop.png)
 
 Desktop Layout Comp:
-![Desktop Layout Comp](images/ib-desktop-comp.png"
+![Desktop Layout Comp](images/ib-desktop-comp.png)
 
 # Iteration 1: Mobile Layout
 - Using HTML & CSS, create the application's mobile layout with up to 3 media queries.
 
-![Mobile Layout](images/ib-mobile.png"
+![Mobile Layout](images/ib-mobile.png)
 
 Mobile Layout Comp:
-![Mobile Layout Comp](images/ib-mobile-comp.png"
+![Mobile Layout Comp](images/ib-mobile-comp.png)
 
 # Iteration 2: Form Functionality
 - Create new idea cards based on user's input

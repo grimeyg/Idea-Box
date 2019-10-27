@@ -65,7 +65,10 @@ h5 {
   background-color: #5356A4;
   margin: 0% 5% 0% 5%;
   cursor: pointer;
+}
 
+.show-starred:hover {
+  background-color: #353567;
 }
 
 .filter {

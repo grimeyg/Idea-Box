@@ -6,7 +6,7 @@ body {
   grid-template-areas:
     "sidebar form"
     "sidebar cards";
-  grid-template-rows: 500px 90%;
+  grid-template-rows: 40% 80%;
   grid-template-columns: 220px auto;
 }
 
@@ -95,7 +95,7 @@ form {
 
 .card-container{
   display: grid;
-  grid-template-rows: repeat(10, auto);
+  grid-template-rows: 40% 40%;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   grid-area: cards;
@@ -125,7 +125,7 @@ textarea {
   width: 300px;
   height: 330px;
   background-color: #FFFFFF;
-  margin-top: 25px;
+  margin: 7% 0% 0% 7%;
   display: flex;
   flex-direction: column;
 }

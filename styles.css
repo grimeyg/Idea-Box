@@ -235,17 +235,17 @@ p {
 
 @media screen and (max-width: 1220px) {
   body {
-      grid-template-rows: 30% 80%;
+      grid-template-rows: 500px 90%;
   }
 
   .form-flex,
   .save {
-      width: 45%;
+      width: 65%;
     }
 
   .card-container {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 32% 32% 32%;
+    grid-template-rows: repeat(10, auto);
   }
 }
 
@@ -323,7 +323,7 @@ p {
 
   .card-container {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-rows: repeat(10, auto);
   }
 }
 
@@ -332,7 +332,7 @@ p {
 
   .card-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 20%;
+    grid-template-rows: repeat(10, auto);;
   }
 
   .card {

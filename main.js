@@ -82,9 +82,9 @@ form.reset();
 };
 
 function favoriteCard() {
-  favorite = !favorite;
 
   for (var i = 0; i < cards.length; i++) {
+
     if (cards[i].id === event.target.id) {
       cards[i].favorite = true;
       favorite = true
@@ -96,6 +96,20 @@ function favoriteCard() {
     event.target.setAttribute("src","images/star.svg");
     }
   };
+// =======
+//     if (event.target.id == cards[i].id) {
+//       cards[i].favorite = !cards[i].favorite;
+//     };
+//     if (cards[i].favorite) {
+//       event.target.setAttribute('src',"images/star-active.svg");
+//     } else {
+//       event.target.setAttribute('src',"images/star.svg");
+//     };
+//     console.log(cards);
+//   }
+// };
+
+// >>>>>>> master
 
 function deleteCard() {
   for (var i = 0; i < cards.length; i++) {

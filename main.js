@@ -64,7 +64,7 @@ function favoriteCard() {
   for (var i = 0; i < cards.length; i++) {
     if (cards[i].id === event.target.id) {
       cards[i].favorite = true;
-      favorite = true
+      favorite = true;
     }
   };
   if (favorite) {

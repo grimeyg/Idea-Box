@@ -7,16 +7,38 @@ var saveBtn = document.querySelector(".save");
 var userInput = document.querySelector(".user-input");
 var cards = [];
 var favorite = false;
+var pageOpacity = document.querySelector(".page-opacity")
+var filter = document.querySelector(".filter");
+var menuClosed = document.querySelector(".menu-icon");
+var sidebar = document.querySelector(".sidebar");
 saveBtn.disabled = true;
+var menuOpen = false;
 
 userInput.addEventListener("keyup", checkInputs);
+menuClosed.addEventListener("click", dropMenu);
+
+function dropMenu () {
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    menuClosed.setAttribute("src","images/menu-close.svg");
+    sidebar.classList.add("mobile-menu");
+    filter.style.display = "flex";
+    pageOpacity.style.display = "flex";
+
+  } else {
+    menuClosed.setAttribute("src","images/menu.svg");;
+    sidebar.classList.remove("mobile-menu");
+    filter.style.display = "none";
+    pageOpacity.style.display = "none";
+  }
+};
 
 cardContainer.addEventListener("click", function(event) {
   event.preventDefault();
-  if (event.target.className === 'star') {
+  if (event.target.className === "star") {
     favoriteCard();
   }
-  if (event.target.className === 'delete') {
+  if (event.target.className === "delete") {
     deleteCard();
   }
 });
@@ -68,17 +90,17 @@ function favoriteCard() {
     }
   };
   if (favorite) {
-    event.target.setAttribute('src',"images/star-active.svg");
+    event.target.setAttribute("src","images/star-active.svg");
   } else {
-    event.target.setAttribute('src',"images/star.svg");
+    event.target.setAttribute("src","images/star.svg");
     }
   };
 
 function deleteCard() {
   for (var i = 0; i < cards.length; i++) {
-    if (event.target.className === 'delete') {
+    if (event.target.className === "delete") {
         cards.splice(i, 1);
-        event.target.closest('.card').remove();
+        event.target.closest(".card").remove();
     }
   }
 };

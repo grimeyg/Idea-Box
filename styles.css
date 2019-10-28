@@ -170,6 +170,20 @@ p {
   cursor: pointer;
 }
 
+.page-opacity {
+  display: none;
+	background: #000;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+
+
 .save {
   width: 40%;
   height: 55px;
@@ -215,6 +229,9 @@ p {
   display: none;
 }
 
+
+
+
 @media screen and (max-width: 1220px) {
   body {
       grid-template-rows: 30% 80%;
@@ -250,10 +267,36 @@ p {
     display: flex;
     flex-direction: row;
     height: 75px;
+    z-index: 2;
+  }
+
+  .mobile-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    z-index: 3;
+    position: absolute;
   }
 
   .filter {
     display: none;
+    align-items: center;
+    flex-direction: column;
+    border: 0;
+  }
+
+  h2 {
+    margin: 4% ;
+    font-size: 13pt;
+    align-self: flex-start;
+  }
+
+  .show-starred {
+    width: 95%;
+    margin: 0;
+    height: 50px;
+    font-size: 23px;
   }
 
   h1 {
@@ -265,8 +308,8 @@ p {
 
   .menu-icon {
     display: inline-block;
-    margin-left: 10px;
-    width: 60px;
+    margin: 10px;
+    width: 35px;
   }
 
   form {

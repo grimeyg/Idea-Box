@@ -1,5 +1,4 @@
 
-
 body {
   margin: 0px auto;
   font-family: 'Open Sans', sans-serif;
@@ -11,7 +10,6 @@ body {
   grid-template-rows: 40% 80%;
   grid-template-columns: 220px auto;
 }
-
 
 h1 {
   font-weight: 700;
@@ -71,11 +69,12 @@ h5 {
   background-color: #353567;
 }
 
-.filter {
+#filter {
   border-top: 1px solid #353567;
   border-bottom: 1px solid #353567;
   height: 130px;
   padding: 3%;
+  /* display: inherit; */
 }
 
 img {
@@ -182,8 +181,6 @@ p {
 	z-index: 1;
 }
 
-
-
 .save {
   width: 40%;
   height: 55px;
@@ -228,6 +225,11 @@ p {
 .menu-icon {
   display: none;
 }
+
+.mobile-filter {
+  display: none;
+}
+
 
 
 
@@ -280,6 +282,10 @@ p {
   }
 
   .filter {
+    display: none;
+  }
+
+  .mobile-filter {
     display: none;
     align-items: center;
     flex-direction: column;

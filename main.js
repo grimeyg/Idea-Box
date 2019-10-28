@@ -8,11 +8,12 @@ var userInput = document.querySelector(".user-input");
 var cards = [];
 var favorite = false;
 var pageOpacity = document.querySelector(".page-opacity")
-var filter = document.querySelector(".filter");
+var filterMobile = document.querySelector(".mobile-filter");
 var menuClosed = document.querySelector(".menu-icon");
 var sidebar = document.querySelector(".sidebar");
 saveBtn.disabled = true;
 var menuOpen = false;
+
 
 userInput.addEventListener("keyup", checkInputs);
 menuClosed.addEventListener("click", dropMenu);
@@ -22,13 +23,13 @@ function dropMenu () {
   if (menuOpen) {
     menuClosed.setAttribute("src","images/menu-close.svg");
     sidebar.classList.add("mobile-menu");
-    filter.style.display = "flex";
+    filterMobile.style.display = "flex";
     pageOpacity.style.display = "flex";
 
   } else {
     menuClosed.setAttribute("src","images/menu.svg");;
     sidebar.classList.remove("mobile-menu");
-    filter.style.display = "none";
+    filterMobile.style.display = "none";
     pageOpacity.style.display = "none";
   }
 };

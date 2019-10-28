@@ -1,5 +1,4 @@
 
-
 body {
   margin: 0px auto;
   font-family: 'Open Sans', sans-serif;
@@ -11,7 +10,6 @@ body {
   grid-template-rows: 40% 80%;
   grid-template-columns: 220px auto;
 }
-
 
 h1 {
   font-weight: 700;
@@ -65,14 +63,18 @@ h5 {
   background-color: #5356A4;
   margin: 0% 5% 0% 5%;
   cursor: pointer;
-
 }
 
-.filter {
+.show-starred:hover {
+  background-color: #353567;
+}
+
+#filter {
   border-top: 1px solid #353567;
   border-bottom: 1px solid #353567;
   height: 130px;
   padding: 3%;
+  /* display: inherit; */
 }
 
 img {
@@ -167,6 +169,18 @@ p {
   cursor: pointer;
 }
 
+.page-opacity {
+  display: none;
+	background: #000;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
 .save {
   width: 40%;
   height: 55px;
@@ -212,6 +226,14 @@ p {
   display: none;
 }
 
+.mobile-filter {
+  display: none;
+}
+
+
+
+
+
 @media screen and (max-width: 1220px) {
   body {
       grid-template-rows: 30% 80%;
@@ -247,10 +269,40 @@ p {
     display: flex;
     flex-direction: row;
     height: 75px;
+    z-index: 2;
+  }
+
+  .mobile-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    z-index: 3;
+    position: absolute;
   }
 
   .filter {
     display: none;
+  }
+
+  .mobile-filter {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    border: 0;
+  }
+
+  h2 {
+    margin: 4% ;
+    font-size: 13pt;
+    align-self: flex-start;
+  }
+
+  .show-starred {
+    width: 95%;
+    margin: 0;
+    height: 50px;
+    font-size: 23px;
   }
 
   h1 {
@@ -262,8 +314,8 @@ p {
 
   .menu-icon {
     display: inline-block;
-    margin-left: 10px;
-    width: 60px;
+    margin: 10px;
+    width: 35px;
   }
 
   form {

@@ -1,4 +1,3 @@
-
 var titleInput = document.querySelector(".title");
 var bodyInput = document.querySelector("textarea");
 var cardContainer = document.querySelector(".card-container");
@@ -6,15 +5,16 @@ var form = document.querySelector("form");
 var saveBtn = document.querySelector(".save");
 var userInput = document.querySelector(".user-input");
 var cards = [];
-var favorite = false;
+// var favorite = false;
 var pageOpacity = document.querySelector(".page-opacity")
 var filterMobile = document.querySelector(".mobile-filter");
 var menuClosed = document.querySelector(".menu-icon");
 var sidebar = document.querySelector(".sidebar");
 saveBtn.disabled = true;
 var menuOpen = false;
+// var Idea = require('../ideas')
 
-
+window.addEventListener("load", pullCard);
 userInput.addEventListener("keyup", checkInputs);
 menuClosed.addEventListener("click", dropMenu);
 
@@ -52,66 +52,90 @@ function checkInputs(event) {
   }
 };
 
-saveBtn.addEventListener("click", addCard)
+form.addEventListener("click", function(event) {
+  if (event.target.className === "save") {
+    cardInput();
+    addCard();
+    for (var i = 0; i < cards.length; i++) {
+    cards[i].saveToStorage();
+  }
+  }
+});
 
-
-
-//when I click Save I should see a new card apper with title/body
-function addCard(event) {
-  event.preventDefault();
-  var id = Date.now();
-  var newbie = new Card(titleInput.value, bodyInput.value, id.value);
-  cards.push(newbie);
-  var recent = cards[cards.length - 1];
-  //when I click save I should not see the page reload
+// var recent = cards[cards.length - 1];
+function addCard() {
+  for (var i = 0; i < cards.length; i++) {
   cardContainer.innerHTML += `
   <div class="card">
     <header>
-      <img src="images/star.svg" alt="Star" class="star" id=${recent.id}>
+      <img src="images/star.svg" alt="Star" class="star" id=${cards[i].id}>
       <img src="images/delete.svg" alt="Delete Icon" class="delete">
     </header>
-    <h4>${recent.title}</h4>
-    <p>${recent.body}</p>
+    <h4 contenteditable="true">${cards[i].title}</h4>
+    <p contenteditable="true">${cards[i].body}</p>
     <footer>
       <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
       <h5>Comment</h5>
     </footer>
   </div>`;
-//When I click Save the inputs fields should be cleared out
-form.reset();
+}
+}
+
+function cardInput() {
+  // event.preventDefault();
+  var id = Date.now();
+  var newIdea = new Card(titleInput.value, bodyInput.value);
+  cards.push(newIdea);
+  form.reset();
 };
 
-function favoriteCard() {
 
+function pullCard() {
+  var cardInString = localStorage.getItem("cardInfo");
+  var cardObject = JSON.parse(cardInString);
+  console.log(cardObject);
+  for (i = 0; i < cardObject.length; i++) {
+  cardContainer.innerHTML += `
+    <div class="card">
+      <header>
+        <img src="images/star.svg" alt="Star" class="star" id=${cardObject.id}>
+        <img src="images/delete.svg" alt="Delete Icon" class="delete">
+      </header>
+      <h4>${cardObject[i].title}</h4>
+      <p>${cardObject[i].body}</p>
+      <footer>
+        <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
+        <h5>Comment</h5>
+      </footer>
+    </div>`;
+  }
+}
+
+
+// make into method
+function favoriteCard(event) {
+  console.log(event.target);
+  var targetId = parseInt(event.target.id, 10);
+
+  // favorite = !favorite;
+  var cardStored = localStorage.getItem("cardInfo");
+  var cardInfo = JSON.parse(cardStored);
   for (var i = 0; i < cards.length; i++) {
 
-    if (cards[i].id === event.target.id) {
-      cards[i].favorite = true;
-      favorite = true;
-    }
+    if (cards[i].id == event.target.id) {
+      // cards[i].starIdea();
+      cards[i].favorite = !cards[i].favorite;
+      }
+  }
+    if (cards[i].favorite) {
+      event.target.setAttribute("src","images/star-active.svg");
+    } else {
+      event.target.setAttribute("src","images/star.svg");
+      }
   };
-  if (favorite) {
-    event.target.setAttribute("src","images/star-active.svg");
-  } else {
-    event.target.setAttribute("src","images/star.svg");
-    }
-  };
-// =======
-//     if (event.target.id == cards[i].id) {
-//       cards[i].favorite = !cards[i].favorite;
-//     };
-//     if (cards[i].favorite) {
-//       event.target.setAttribute('src',"images/star-active.svg");
-//     } else {
-//       event.target.setAttribute('src',"images/star.svg");
-//     };
-//     console.log(cards);
-//   }
-// };
 
-// >>>>>>> master
-
-function deleteCard() {
+// make into method
+function deleteCard(event) {
   for (var i = 0; i < cards.length; i++) {
     if (event.target.className === "delete") {
         cards.splice(i, 1);

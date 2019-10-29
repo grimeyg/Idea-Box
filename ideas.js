@@ -5,11 +5,16 @@ class Idea {
     this.id = id || Date.now();
     this.favorite = false;
   }
-  saveToStorage(cards) {
-    var cardString = JSON.stringify(cards);
-    localStorage.setItem("cardInfo", cardString);
+  saveToStorage() {
+  //   var cardString = JSON.stringify(cards);
+  //   localStorage.setItem("cardInfo", cardString);
   }
   deleteFromStorage() {
+    for (var i = 0; i < cards.length; i++) {
+          cards.splice(i, 1);
+          event.target.closest(".card").remove();
+          console.log(cards);
+    }
   }
   updateIdea() {
   }

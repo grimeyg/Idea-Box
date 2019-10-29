@@ -25,10 +25,10 @@ menuClosed.addEventListener("click", dropMenu);
 cardContainer.addEventListener("click", function(event) {
   event.preventDefault();
   if (event.target.className === "star") {
-    favoriteCard();
+    favoriteCard(event);
   }
   if (event.target.className === "delete") {
-    deleteCard();
+    event.target.deleteFromStorage;
   }
 });
 
@@ -37,7 +37,7 @@ form.addEventListener("click", function(event) {
     cardInput();
     addCard();
     for (var i = 0; i < cards.length; i++) {
-      cards[i].saveToStorage();
+      // cards[i].saveToStorage();
     }
   }
 });
@@ -66,32 +66,35 @@ function checkInputs(event) {
   }
 };
 
-// var recent = cards[cards.length - 1];
 function addCard() {
-  for (var i = 0; i < cards.length; i++) {
+  var recent = cards[cards.length - 1];
   cardContainer.innerHTML += `
   <div class="card">
     <header>
-      <img src="images/star.svg" alt="Star" class="star" id=${cards[i].id}>
+      <img src="images/star.svg" alt="Star" class="star" id=${recent.id}>
       <img src="images/delete.svg" alt="Delete Icon" class="delete">
     </header>
-    <h4 contenteditable="true">${cards[i].title}</h4>
-    <p contenteditable="true">${cards[i].body}</p>
+    <h4 contenteditable="true">${recent.title}</h4>
+    <p contenteditable="true">${recent.body}</p>
     <footer>
       <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
       <h5>Comment</h5>
     </footer>
   </div>`;
-  }
+  saveBtn.disabled = true;
+  saveBtn.id = "";
+  console.log(cards);
 }
 
 
 
 function cardInput() {
   // event.preventDefault()
+  // for (var i = 0; i < cards.length; i++){
   var newIdea = new Idea(titleInput.value, bodyInput.value);
+// }
   cards.push(newIdea);
-  localStorage.setItem('cardContainer', JSON.stringify(cards));
+  localStorage.setItem("cardContainer", JSON.stringify(cards));
   form.reset();
 };
 
@@ -99,9 +102,9 @@ function cardInput() {
 
 
 function pullCard() {
-  var arrayOfObjects = localStorage.getItem('cardContainer');
+  var arrayOfObjects = localStorage.getItem("cardContainer");
   var cardObject = JSON.parse(arrayOfObjects);
-  console.log(cardObject);
+console.log(cardObject);
 
   for (i = 0; i < cardObject.length; i++) {
   cardContainer.innerHTML += `
@@ -141,11 +144,12 @@ function favoriteCard(event) {
   };
 
 // make into method
-function deleteCard(event) {
-  for (var i = 0; i < cards.length; i++) {
-    if (event.target.className === "delete") {
-        cards.splice(i, 1);
-        event.target.closest(".card").remove();
-    }
-  }
-};
+// function deleteCard(event) {
+//   for (var i = 0; i < cards.length; i++) {
+//
+//         cards.splice(i, 1);
+//         event.target.closest(".card").remove();
+//         console.log(cards);
+//         // newIdea.deleteFromStorage();
+//   }
+// };

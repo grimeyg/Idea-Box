@@ -62,28 +62,28 @@ form.addEventListener("click", function(event) {
 function rememberCard() {
   var newbieToString = localStorage.getItem('cardInfo');
   var newbieToObject = JSON.parse(newbieToString);
+
   console.log("Card Info:", newbieToObject);
 }
 
 function pullCard() {
   var cardInfo = JSON.parse(localStorage.getItem('cardInfo'));
-  for (i = 0)
-  console.log(cardInfo);
-cardContainer.innerHTML += `
-  <div class="card">
-    <header>
-      <img src="images/star.svg" alt="Star" class="star" >
-      <img src="images/delete.svg" alt="Delete Icon" class="delete">
-    </header>
-    <h4>${cardInfo.title}</h4>
-    <p>${cardInfo.body}</p>
-    <footer>
-      <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
-      <h5>Comment</h5>
-    </footer>
-  </div>`;
+  for (i = 0; i < cardInfo.length; i++) {
+  cardContainer.innerHTML += `
+    <div class="card">
+      <header>
+        <img src="images/star.svg" alt="Star" class="star" >
+        <img src="images/delete.svg" alt="Delete Icon" class="delete">
+      </header>
+      <h4>${cardInfo[i].title}</h4>
+      <p>${cardInfo[i].body}</p>
+      <footer>
+        <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
+        <h5>Comment</h5>
+      </footer>
+    </div>`;
 }
-
+}
 
 //when I click Save I should see a new card apper with title/body
 function addCard() {
@@ -92,8 +92,8 @@ function addCard() {
   var newbie = new Card(titleInput.value, bodyInput.value, id.value);
   cards.push(newbie);
   var recent = cards[cards.length - 1];
-  var newbieString = JSON.stringify(newbie);
-  localStorage.setItem('cardInfo', newbieString);
+  var cardsString = JSON.stringify(cards);
+  localStorage.setItem('cardInfo', cardsString);
   //when I click save I should not see the page reload
   cardContainer.innerHTML += `
   <div class="card">
@@ -113,17 +113,23 @@ form.reset();
 };
 
 function favoriteCard() {
-  for (var i = 0; i < cards.length; i++) {
-    if (cards[i].id === event.target.id) {
-      cards[i].favorite = true;
-      favorite = true;
+
+  var cardInfo = JSON.parse(localStorage.getItem('cardInfo'));
+
+  favorite = !favorite;
+  for (var i = 0; i < cardInfo.length; i++) {
+    // if (cardInfo[i].id === event.target.id) {
+      cardInfo[i].favorite = true;
+      // favorite = true;
+      if (favorite) {
+        event.target.setAttribute("src","images/star-active.svg");
+      } else {
+        event.target.setAttribute("src","images/star.svg");
+        }
+        console.log(cardInfo[i]);
     }
-  };
-  if (favorite) {
-    event.target.setAttribute("src","images/star-active.svg");
-  } else {
-    event.target.setAttribute("src","images/star.svg");
-    }
+  // };
+
   };
 
 

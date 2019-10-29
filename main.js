@@ -14,9 +14,33 @@ saveBtn.disabled = true;
 var menuOpen = false;
 // var Idea = require('../ideas')
 
-window.addEventListener("load", pullCard);
+window.addEventListener("load", function(){
+if(localStorage.getItem('cardContainer') !== null){
+  pullCard();
+  }
+});
 userInput.addEventListener("keyup", checkInputs);
 menuClosed.addEventListener("click", dropMenu);
+
+cardContainer.addEventListener("click", function(event) {
+  event.preventDefault();
+  if (event.target.className === "star") {
+    favoriteCard();
+  }
+  if (event.target.className === "delete") {
+    deleteCard();
+  }
+});
+
+form.addEventListener("click", function(event) {
+  if (event.target.className === "save") {
+    cardInput();
+    addCard();
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].saveToStorage();
+    }
+  }
+});
 
 function dropMenu () {
   menuOpen = !menuOpen;
@@ -34,16 +58,6 @@ function dropMenu () {
   }
 };
 
-cardContainer.addEventListener("click", function(event) {
-  event.preventDefault();
-  if (event.target.className === "star") {
-    favoriteCard();
-  }
-  if (event.target.className === "delete") {
-    deleteCard();
-  }
-});
-
 function checkInputs(event) {
   event.preventDefault();
    if (userInput.value) {
@@ -51,16 +65,6 @@ function checkInputs(event) {
     saveBtn.id = "active";
   }
 };
-
-form.addEventListener("click", function(event) {
-  if (event.target.className === "save") {
-    cardInput();
-    addCard();
-    for (var i = 0; i < cards.length; i++) {
-    cards[i].saveToStorage();
-  }
-  }
-});
 
 // var recent = cards[cards.length - 1];
 function addCard() {
@@ -78,22 +82,27 @@ function addCard() {
       <h5>Comment</h5>
     </footer>
   </div>`;
-}
+  }
 }
 
+
+
 function cardInput() {
-  // event.preventDefault();
-  var id = Date.now();
-  var newIdea = new Card(titleInput.value, bodyInput.value);
+  // event.preventDefault()
+  var newIdea = new Idea(titleInput.value, bodyInput.value);
   cards.push(newIdea);
+  localStorage.setItem('cardContainer', JSON.stringify(cards));
   form.reset();
 };
 
 
+
+
 function pullCard() {
-  var cardInString = localStorage.getItem("cardInfo");
-  var cardObject = JSON.parse(cardInString);
+  var arrayOfObjects = localStorage.getItem('cardContainer');
+  var cardObject = JSON.parse(arrayOfObjects);
   console.log(cardObject);
+
   for (i = 0; i < cardObject.length; i++) {
   cardContainer.innerHTML += `
     <div class="card">
@@ -112,16 +121,13 @@ function pullCard() {
 }
 
 
+
 // make into method
 function favoriteCard(event) {
   console.log(event.target);
   var targetId = parseInt(event.target.id, 10);
 
-  // favorite = !favorite;
-  var cardStored = localStorage.getItem("cardInfo");
-  var cardInfo = JSON.parse(cardStored);
   for (var i = 0; i < cards.length; i++) {
-
     if (cards[i].id == event.target.id) {
       // cards[i].starIdea();
       cards[i].favorite = !cards[i].favorite;

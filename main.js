@@ -136,7 +136,7 @@ function addCard(card) {
   saveBtn.disabled = true;
   saveBtn.id = "";
 }
-  
+
 function addFavoriteCard(card) {
 
   cardContainer.innerHTML += `
@@ -180,7 +180,7 @@ function inputFromStorage(card) {
 function pullCard() {
   var arrayOfObjects = localStorage.getItem("cardsInfo");
   var cardArray = JSON.parse(arrayOfObjects);
-  for (i = 0; i < cardArray.length; i++) {
+  for (var i = 0; i < cardArray.length; i++) {
     console.log(cardArray[i]);
     inputFromStorage(cardArray[i]);
   }

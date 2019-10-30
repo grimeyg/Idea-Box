@@ -1,5 +1,4 @@
 class Idea {
-
 constructor (title, body, id, favorite) {
   this.title = title;
   this.body = body;
@@ -44,6 +43,5 @@ updateIdea(card) {
 // starIdea() {
 //   this.favorite = !this.favorite;
 // }
-
 }
 // module.exports = Idea;

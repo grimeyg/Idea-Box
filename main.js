@@ -1,4 +1,3 @@
-
 var titleInput = document.querySelector(".title");
 var bodyInput = document.querySelector("textarea");
 var cardContainer = document.querySelector(".card-container");
@@ -6,17 +5,42 @@ var form = document.querySelector("form");
 var saveBtn = document.querySelector(".save");
 var userInput = document.querySelector(".user-input");
 var cards = [];
-var favorite = false;
+// var favorite = false;
 var pageOpacity = document.querySelector(".page-opacity")
 var filterMobile = document.querySelector(".mobile-filter");
 var menuClosed = document.querySelector(".menu-icon");
 var sidebar = document.querySelector(".sidebar");
 saveBtn.disabled = true;
 var menuOpen = false;
+// var Idea = require('../ideas')
 
-
+window.addEventListener("load", function(){
+if(localStorage.getItem('cardContainer') !== null){
+  pullCard();
+  }
+});
 userInput.addEventListener("keyup", checkInputs);
 menuClosed.addEventListener("click", dropMenu);
+
+cardContainer.addEventListener("click", function(event) {
+  event.preventDefault();
+  if (event.target.className === "star") {
+    favoriteCard(event);
+  }
+  if (event.target.className === "delete") {
+    event.target.deleteFromStorage;
+  }
+});
+
+form.addEventListener("click", function(event) {
+  if (event.target.className === "save") {
+    cardInput();
+    addCard();
+    for (var i = 0; i < cards.length; i++) {
+      // cards[i].saveToStorage();
+    }
+  }
+});
 
 function dropMenu () {
   menuOpen = !menuOpen;
@@ -34,16 +58,6 @@ function dropMenu () {
   }
 };
 
-cardContainer.addEventListener("click", function(event) {
-  event.preventDefault();
-  if (event.target.className === "star") {
-    favoriteCard();
-  }
-  if (event.target.className === "delete") {
-    deleteCard();
-  }
-});
-
 function checkInputs(event) {
   event.preventDefault();
    if (userInput.value) {
@@ -52,70 +66,90 @@ function checkInputs(event) {
   }
 };
 
-saveBtn.addEventListener("click", addCard)
-
-
-
-//when I click Save I should see a new card apper with title/body
-function addCard(event) {
-  event.preventDefault();
-  var id = Date.now();
-  var newbie = new Card(titleInput.value, bodyInput.value, id.value);
-  cards.push(newbie);
+function addCard() {
   var recent = cards[cards.length - 1];
-  //when I click save I should not see the page reload
   cardContainer.innerHTML += `
   <div class="card">
     <header>
       <img src="images/star.svg" alt="Star" class="star" id=${recent.id}>
       <img src="images/delete.svg" alt="Delete Icon" class="delete">
     </header>
-    <h4>${recent.title}</h4>
-    <p>${recent.body}</p>
+    <h4 contenteditable="true">${recent.title}</h4>
+    <p contenteditable="true">${recent.body}</p>
     <footer>
       <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
       <h5>Comment</h5>
     </footer>
   </div>`;
-//When I click Save the inputs fields should be cleared out
-form.reset();
+  saveBtn.disabled = true;
+  saveBtn.id = "";
+  console.log(cards);
+}
+
+
+
+function cardInput() {
+  // event.preventDefault()
+  // for (var i = 0; i < cards.length; i++){
+  var newIdea = new Idea(titleInput.value, bodyInput.value);
+// }
+  cards.push(newIdea);
+  localStorage.setItem("cardContainer", JSON.stringify(cards));
+  form.reset();
 };
 
-function favoriteCard() {
+
+
+
+function pullCard() {
+  var arrayOfObjects = localStorage.getItem("cardContainer");
+  var cardObject = JSON.parse(arrayOfObjects);
+console.log(cardObject);
+
+  for (i = 0; i < cardObject.length; i++) {
+  cardContainer.innerHTML += `
+    <div class="card">
+      <header>
+        <img src="images/star.svg" alt="Star" class="star" id=${cardObject.id}>
+        <img src="images/delete.svg" alt="Delete Icon" class="delete">
+      </header>
+      <h4>${cardObject[i].title}</h4>
+      <p>${cardObject[i].body}</p>
+      <footer>
+        <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
+        <h5>Comment</h5>
+      </footer>
+    </div>`;
+  }
+}
+
+
+
+// make into method
+function favoriteCard(event) {
+  console.log(event.target);
+  var targetId = parseInt(event.target.id, 10);
 
   for (var i = 0; i < cards.length; i++) {
+    if (cards[i].id == event.target.id) {
+      // cards[i].starIdea();
+      cards[i].favorite = !cards[i].favorite;
+      }
+  }
+    if (cards[i].favorite) {
+      event.target.setAttribute("src","images/star-active.svg");
+    } else {
+      event.target.setAttribute("src","images/star.svg");
+      }
+  };
 
-    if (cards[i].id === event.target.id) {
-      cards[i].favorite = true;
-      favorite = true;
-    }
-  };
-  if (favorite) {
-    event.target.setAttribute("src","images/star-active.svg");
-  } else {
-    event.target.setAttribute("src","images/star.svg");
-    }
-  };
-// =======
-//     if (event.target.id == cards[i].id) {
-//       cards[i].favorite = !cards[i].favorite;
-//     };
-//     if (cards[i].favorite) {
-//       event.target.setAttribute('src',"images/star-active.svg");
-//     } else {
-//       event.target.setAttribute('src',"images/star.svg");
-//     };
-//     console.log(cards);
+// make into method
+// function deleteCard(event) {
+//   for (var i = 0; i < cards.length; i++) {
+//
+//         cards.splice(i, 1);
+//         event.target.closest(".card").remove();
+//         console.log(cards);
+//         // newIdea.deleteFromStorage();
 //   }
 // };
-
-// >>>>>>> master
-
-function deleteCard() {
-  for (var i = 0; i < cards.length; i++) {
-    if (event.target.className === "delete") {
-        cards.splice(i, 1);
-        event.target.closest(".card").remove();
-    }
-  }
-};

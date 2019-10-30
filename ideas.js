@@ -5,6 +5,7 @@ constructor (title, body, id, favorite) {
   this.id = id || Date.now();
   this.favorite = favorite || false;
 }
+
 saveToStorage(cardArray) {
   var cardString = JSON.stringify(cardArray);
   localStorage.setItem("cardsInfo", cardString);

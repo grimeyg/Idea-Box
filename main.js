@@ -34,7 +34,7 @@ cardContainer.addEventListener("click", function(event) {
     favoriteCard(event);
   }
   if (event.target.className === "delete") {
-    removeCard();
+    removeCard(event);
   }
 });
 
@@ -72,7 +72,7 @@ function checkInputs(event) {
 };
 
 
-function removeCard() {
+function removeCard(event) {
   var targetId = parseInt(event.target.id, 10);
   var deleted = event.target.closest("card");
   deleted = new Idea;
@@ -112,7 +112,7 @@ function removeCard() {
     if (targetId === cards[i].id) {
       cards.splice(i, 1);
       console.log(cards);
-      deleted.saveToStorage();
+      deleted.saveToStorage(cards);
       event.target.setAttribute("src","images/delete-active.svg");
     }
   }

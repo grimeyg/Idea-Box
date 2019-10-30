@@ -12,6 +12,7 @@ var menuClosed = document.querySelector(".menu-icon");
 var sidebar = document.querySelector(".sidebar");
 saveBtn.disabled = true;
 var menuOpen = false;
+var starArr =[];
 // var Idea = require('../ideas')
 // window.addEventListener("load", pullCard);
 window.addEventListener("load", function(){
@@ -101,6 +102,27 @@ function addCard(card) {
   saveBtn.disabled = true;
   saveBtn.id = "";
 }
+
+
+function addFavoriteCard(card) {
+  // for (var i = 0; i < cards.length; i++) {
+  // var recent = cards[cards.length - 1];
+  cardContainer.innerHTML += `
+  <div class="card">
+    <header>
+      <img src="images/star-active.svg" alt="Star" class="star" id="${card.id}">
+      <img src="images/delete.svg" alt="Delete Icon" class="delete" id="${card.id}">
+    </header>
+    <h4 contenteditable="true">${card.title}</h4>
+    <p contenteditable="true">${card.body}</p>
+    <footer>
+      <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
+      <h5>Comment</h5>
+    </footer>
+  </div>`;
+  saveBtn.disabled = true;
+  saveBtn.id = "";
+}
 // }
 // }
 function inputFromForm() {
@@ -109,25 +131,39 @@ function inputFromForm() {
   cards.push(newIdea);
   newIdea.saveToStorage(cards);
   addCard(newIdea);
-  console.log(cards);
   // for (var i = 0; i < cards.length; i++){
   // localStorage.setItem("cardContainer", JSON.stringify(cards));
   form.reset();
 };
 
 function inputFromStorage(card) {
-  console.log(card);
   card = new Idea(card.title, card.body, card.id, card.favorite);
-  if (card.favorite) {
+
+  //   var matchingStar = cardContainer.querySelectorAll(".star");
+  //   console.log(matchingStar);
+  //   //
+  //   starArr.push(matchingStar);
+  //   console.log(starArr);
+  //   for (var i = 0; i < starArr.length; i++) {
+  //     if (starArr[i] === card.id) {
+  //       starrArr[i].setAttribute("src","images/star-active.svg");
+  //     }
+  //   }
+
+
   //   event.target.setAttribute("src","images/star-active.svg");
   // } else {
   //   event.target.setAttribute("src","images/star.svg");
-    }
+    // }
   cards.push(card);
   card.saveToStorage(cards);
+  if (card.favorite) {
+    addFavoriteCard(card)
+  } else {
   addCard(card);
-  console.log(cards);
 }
+}
+
 
 function pullCard() {
   var arrayOfObjects = localStorage.getItem("cardsInfo");
@@ -158,17 +194,19 @@ function favoriteCard(event) {
   for (var i = 0; i < cards.length; i++) {
     if (cards[i].id == event.target.id) {
       cards[i].updateIdea(cards[i]);
-      cards[i].saveToStorage(cards);
-      console.log(localStorage);
-      console.log(cards[i].favorite);
       }
 
-    if (cards[i].favorite) {
-      event.target.setAttribute("src","images/star-active.svg");
-    } else {
-      event.target.setAttribute("src","images/star.svg");
-      }
-    }
+    // if (cards[i].favorite) {
+    //   event.target.setAttribute("src","images/star-active.svg");
+    // } else {
+    //   event.target.setAttribute("src","images/star.svg");
+    //   }
+
+
+    cards[i].saveToStorage(cards);
+    console.log(localStorage);
+    console.log(cards[i].favorite);
+  }
   };
 // make into method
 // function deleteCard(event) {

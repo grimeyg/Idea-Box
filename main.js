@@ -9,12 +9,18 @@ var pageOpacity = document.querySelector(".page-opacity")
 var filterMobile = document.querySelector(".mobile-filter");
 var menuClosed = document.querySelector(".menu-icon");
 var sidebar = document.querySelector(".sidebar");
-saveBtn.disabled = true;
 var menuOpen = false;
-var starArr =[];
+saveBtn.disabled = true;
+
 
 window.addEventListener("load", function(){
   if (localStorage !== null) {
+    pullCard();
+  }
+});
+
+window.addEventListener("load", function(){
+    if (localStorage.cardInfo !== undefined) {
     pullCard();
   }
 });
@@ -34,11 +40,14 @@ cardContainer.addEventListener("click", function(event) {
 
 form.addEventListener("click", function(event) {
   if (event.target.className === "save") {
+
     inputFromForm();
+
     }
 });
 
 function dropMenu () {
+
   menuOpen = !menuOpen;
   if (menuOpen) {
     menuClosed.setAttribute("src","images/menu-close.svg");
@@ -54,12 +63,14 @@ function dropMenu () {
 };
 
 function checkInputs(event) {
+
   event.preventDefault();
    if (userInput.value) {
     saveBtn.disabled = false;
     saveBtn.id = "active";
   }
 };
+
 
 function removeCard() {
   var targetId = parseInt(event.target.id, 10);
@@ -91,8 +102,43 @@ function addCard(card) {
   saveBtn.id = "";
 }
 
+function removeCard() {
 
+ var targetId = parseInt(event.target.id, 10);
+  var deleted = event.target.closest("card");
+  deleted = new Idea;
+
+  for (var i = 0; i < cards.length; i++) {
+    if (targetId === cards[i].id) {
+      cards.splice(i, 1);
+      console.log(cards);
+      deleted.saveToStorage();
+      event.target.setAttribute("src","images/delete-active.svg");
+    }
+  }
+};
+
+function addCard(card) {
+
+  cardContainer.innerHTML += `
+  <div class="card">
+    <header>
+      <img src="images/star.svg" alt="Star" class="star" id="${card.id}">
+ <img src="images/delete.svg" alt="Delete Icon" class="delete" id="${card.id}">
+    </header>
+    <h4 contenteditable="true">${card.title}</h4>
+    <p contenteditable="true">${card.body}</p>
+    <footer>
+      <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
+      <h5>Comment</h5>
+    </footer>
+  </div>`;
+  saveBtn.disabled = true;
+  saveBtn.id = "";
+}
+  
 function addFavoriteCard(card) {
+
   cardContainer.innerHTML += `
   <div class="card">
     <header>
@@ -148,4 +194,5 @@ function favoriteCard(event) {
       }
     cards[i].saveToStorage(cards);
   }
+
 };

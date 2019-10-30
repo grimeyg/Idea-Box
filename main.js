@@ -14,11 +14,13 @@ saveBtn.disabled = true;
 var menuOpen = false;
 // var Idea = require('../ideas')
 
+// window.addEventListener("load", pullCard);
 window.addEventListener("load", function(){
-if(localStorage.getItem('cardContainer') !== null){
-  pullCard();
+  if (localStorage !== null) {
+    pullCard();
   }
 });
+
 userInput.addEventListener("keyup", checkInputs);
 menuClosed.addEventListener("click", dropMenu);
 
@@ -37,7 +39,7 @@ cardContainer.addEventListener("click", function(event) {
 form.addEventListener("click", function(event) {
   if (event.target.className === "save") {
     cardInput();
-    addCard();
+    // addCard();
     // for (var i = 0; i < cards.length; i++) {
       // cards[i].saveToStorage();
     }
@@ -96,17 +98,18 @@ function removeCard() {
 
 
 
-function addCard(event) {
+function addCard(card) {
+
   // for (var i = 0; i < cards.length; i++) {
-  var recent = cards[cards.length - 1];
+  // var recent = cards[cards.length - 1];
   cardContainer.innerHTML += `
   <div class="card">
     <header>
-      <img src="images/star.svg" alt="Star" class="star" id="${recent.id}">
-      <img src="images/delete.svg" alt="Delete Icon" class="delete" id="${recent.id}">
+      <img src="images/star.svg" alt="Star" class="star" id="${card.id}">
+      <img src="images/delete.svg" alt="Delete Icon" class="delete" id="${card.id}">
     </header>
-    <h4 contenteditable="true">${recent.title}</h4>
-    <p contenteditable="true">${recent.body}</p>
+    <h4 contenteditable="true">${card.title}</h4>
+    <p contenteditable="true">${card.body}</p>
     <footer>
       <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
       <h5>Comment</h5>
@@ -115,10 +118,10 @@ function addCard(event) {
   saveBtn.disabled = true;
   saveBtn.id = "";
 
-
+}
 
 // }
-}
+// }
 
 
 
@@ -128,6 +131,7 @@ function cardInput() {
   var newIdea = new Idea(titleInput.value, bodyInput.value, id);
   cards.push(newIdea);
   newIdea.saveToStorage(cards);
+  addCard(newIdea);
   console.log(cards);
   // for (var i = 0; i < cards.length; i++){
 
@@ -139,11 +143,15 @@ function cardInput() {
 
 
 function pullCard() {
-  var arrayOfObjects = localStorage.getItem("cardContainer");
-  var cardObject = JSON.parse(arrayOfObjects);
-// console.log(cardObject);
 
-  // for (i = 0; i < cardObject.length; i++) {
+  var arrayOfObjects = localStorage.getItem("cardsInfo");
+  var cardArray = JSON.parse(arrayOfObjects);
+  console.log(cardArray);
+
+  for (i = 0; i < cardArray.length; i++) {
+    cardArray[i] = new Idea;
+    console.log(cardArray[i]);
+    addCard(cardArray[i]);
   // cardContainer.innerHTML += `
   //   <div class="card">
   //     <header>
@@ -158,6 +166,7 @@ function pullCard() {
   //     </footer>
   //   </div>`;
   // }
+}
 }
 
 

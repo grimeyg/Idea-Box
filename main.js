@@ -1,28 +1,19 @@
-var titleInput = document.querySelector(".title");
 var bodyInput = document.querySelector("textarea");
 var cardContainer = document.querySelector(".card-container");
-var form = document.querySelector("form");
-var saveBtn = document.querySelector(".save");
-var userInput = document.querySelector(".user-input");
 var cards = [];
-var pageOpacity = document.querySelector(".page-opacity")
 var filterMobile = document.querySelector(".mobile-filter");
+var form = document.querySelector("form");
 var menuClosed = document.querySelector(".menu-icon");
-var sidebar = document.querySelector(".sidebar");
 var menuOpen = false;
+var pageOpacity = document.querySelector(".page-opacity")
+var saveBtn = document.querySelector(".save");
 saveBtn.disabled = true;
-
-
-window.addEventListener("load", function(){
-  if (localStorage !== null) {
-    pullCard();
-  }
-});
+var sidebar = document.querySelector(".sidebar");
+var titleInput = document.querySelector(".title");
+var userInput = document.querySelector(".user-input");
 
 window.addEventListener("load", function(){
-    if (localStorage.cardInfo !== undefined) {
     pullCard();
-  }
 });
 
 userInput.addEventListener("keyup", checkInputs);
@@ -40,14 +31,11 @@ cardContainer.addEventListener("click", function(event) {
 
 form.addEventListener("click", function(event) {
   if (event.target.className === "save") {
-
     inputFromForm();
-
     }
 });
 
 function dropMenu () {
-
   menuOpen = !menuOpen;
   if (menuOpen) {
     menuClosed.setAttribute("src","images/menu-close.svg");
@@ -63,7 +51,6 @@ function dropMenu () {
 };
 
 function checkInputs(event) {
-
   event.preventDefault();
    if (userInput.value) {
     saveBtn.disabled = false;
@@ -71,47 +58,13 @@ function checkInputs(event) {
   }
 };
 
-
-function removeCard(event) {
-  var targetId = parseInt(event.target.id, 10);
-  var deleted = event.target.closest("card");
-  deleted = new Idea;
-  for (var i = 0; i < cards.length; i++) {
-    if (targetId === cards[i].id) {
-      cards.splice(i, 1);
-      deleted.saveToStorage(cards);
-    }
-  }
-}
-
-function addCard(card) {
-  cardContainer.innerHTML += `
-  <div class="card">
-    <header>
-      <img src="images/star.svg" alt="Star" class="star" id="${card.id}">
-      <img src="images/delete.svg" alt="Delete Icon" class="delete" id="${card.id}">
-    </header>
-    <h4 contenteditable="true">${card.title}</h4>
-    <p contenteditable="true">${card.body}</p>
-    <footer>
-      <img src="images/comment.svg" alt="Comment Icon" class="comment-icon">
-      <h5>Comment</h5>
-    </footer>
-  </div>`;
-  saveBtn.disabled = true;
-  saveBtn.id = "";
-}
-
 function removeCard() {
-
  var targetId = parseInt(event.target.id, 10);
   var deleted = event.target.closest("card");
   deleted = new Idea;
-
   for (var i = 0; i < cards.length; i++) {
     if (targetId === cards[i].id) {
       cards.splice(i, 1);
-      console.log(cards);
       deleted.saveToStorage(cards);
       event.target.setAttribute("src","images/delete-active.svg");
     }
@@ -119,7 +72,6 @@ function removeCard() {
 };
 
 function addCard(card) {
-
   cardContainer.innerHTML += `
   <div class="card">
     <header>
@@ -135,10 +87,9 @@ function addCard(card) {
   </div>`;
   saveBtn.disabled = true;
   saveBtn.id = "";
-}
+};
 
 function addFavoriteCard(card) {
-
   cardContainer.innerHTML += `
   <div class="card">
     <header>
@@ -154,7 +105,7 @@ function addFavoriteCard(card) {
   </div>`;
   saveBtn.disabled = true;
   saveBtn.id = "";
-}
+};
 
 function inputFromForm() {
   var id = Date.now();
@@ -174,17 +125,15 @@ function inputFromStorage(card) {
   } else {
   addCard(card);
   }
-}
-
+};
 
 function pullCard() {
   var arrayOfObjects = localStorage.getItem("cardsInfo");
   var cardArray = JSON.parse(arrayOfObjects);
   for (var i = 0; i < cardArray.length; i++) {
-    console.log(cardArray[i]);
     inputFromStorage(cardArray[i]);
   }
-}
+};
 
 function favoriteCard(event) {
   var targetId = parseInt(event.target.id, 10);
@@ -194,5 +143,4 @@ function favoriteCard(event) {
       }
     cards[i].saveToStorage(cards);
   }
-
 };

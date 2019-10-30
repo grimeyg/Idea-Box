@@ -117,7 +117,6 @@ function addCard(card) {
   </div>`;
   saveBtn.disabled = true;
   saveBtn.id = "";
-
 }
 
 // }
@@ -139,6 +138,14 @@ function cardInput() {
   form.reset();
 };
 
+function inputOtherWay(card) {
+  card = new Idea(card.title, card.body, card.id);
+  cards.push(card);
+  card.saveToStorage(cards);
+  addCard(card);
+  console.log(cards);
+}
+
 
 
 
@@ -146,12 +153,15 @@ function pullCard() {
 
   var arrayOfObjects = localStorage.getItem("cardsInfo");
   var cardArray = JSON.parse(arrayOfObjects);
-  console.log(cardArray);
+
 
   for (i = 0; i < cardArray.length; i++) {
-    cardArray[i] = new Idea;
     console.log(cardArray[i]);
-    addCard(cardArray[i]);
+    // cardArray[i] = new Idea(cardArray[i].title, cardArray[i].body, cardArray[i].id);
+    inputOtherWay(cardArray[i]);
+
+
+
   // cardContainer.innerHTML += `
   //   <div class="card">
   //     <header>
